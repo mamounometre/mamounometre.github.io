@@ -1,0 +1,10 @@
+name: Lint Vue project
+on: [push, pull_request]
+jobs:
+  build_vue:
+    runs-on: ubuntu-latest
+    name: Lint Vue project
+    steps:
+      - uses: actions/checkout@v2
+      - run: yarn
+      - run: yarn lint
