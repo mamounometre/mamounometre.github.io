@@ -2,14 +2,15 @@
   <v-container>
     <v-form ref="form" lazy-validation>
       <v-row>
-        <v-col xs="12" sm="12" md="10">
+        <v-col cols="12" xs="12" sm="12" md="10" lg="10">
           <v-container class="grey transparent lighten-5">
             <v-row>
               <v-col
-              xs="12"
-                sm="12"
-                md="6"
-                lg="6"
+                cols="12"
+                xs="12"
+                sm="6"
+                md="4"
+                lg="3"
                 v-for="question in questionnaire.questions"
                 :key="question.id"
               >
@@ -41,7 +42,7 @@ export default {
   },
   methods: {
     calculateScore: function (questionnaire) {
-      const questionnaireInput = questionnaire || this.$props.questionnaire ;
+      const questionnaireInput = questionnaire || this.$props.questionnaire;
       this.scoreComputed = calculateScore(questionnaireInput);
     },
   },
