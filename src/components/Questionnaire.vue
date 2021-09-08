@@ -21,15 +21,24 @@
         </v-col>
       </v-row>
     </v-form>
-    <v-btn large dark bottom center color="green" @click="calculateScore">
+    <v-btn large dark bottom center color="green" @click="share">
       Mamounoscore: {{ calculatedScore() }} points
     </v-btn>
+    <v-snackbar v-model="snackbar">
+      <a :href="shareLink" target="_blank">Lien de partage à copier</a> : {{ shareLink }}
+      <template v-slot:action="{ attrs }">
+        <v-btn color="pink" text v-bind="attrs" @click="snackbar = false">
+          Fermer
+        </v-btn>
+      </template>
+    </v-snackbar>
   </v-container>
 </template>
 
 <script>
 import Question from "./Question.vue";
-import { calculateScore } from "./calcScore";
+import { calculateScore } from "../calcScore";
+import { buildShareUrl } from "../share";
 
 export default {
   name: "Questionnaire",
@@ -40,10 +49,19 @@ export default {
     title: String,
     questionnaire: Object,
   },
+  data: () => ({
+    snackbar: false,
+    shareLink: ""
+  }),
   methods: {
     calculatedScore: function () {
       const questionnaireInput = this.$props.questionnaire;
       return calculateScore(questionnaireInput);
+    },
+    share: async function () {
+      this.shareLink = await buildShareUrl(this.$props.questionnaire);
+      console.log("Share link: " + this.shareLink);
+      this.snackbar = true;
     },
   },
   watch: {

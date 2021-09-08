@@ -1,4 +1,22 @@
 export function getQuestionnaire() {
+    const questionnaire = questionnaireMamounometre();
+    const questionnaireWithInitValues = initQuestionnaire(questionnaire);
+    return questionnaireWithInitValues;
+}
+
+function initQuestionnaire(questionnaire) {
+    const urlParams = new URLSearchParams(window.location.search);
+    questionnaire.questions = questionnaire.questions.map(question => {
+        if (urlParams.get(question.id)) {
+            const value = urlParams.get(question.id);
+            question.value = question.type === 'boolean' ? Boolean.valueOf(value) : question.type === 'number' ? parseInt(value) : value;
+        }
+        return question;
+    });
+    return questionnaire;
+}
+
+function questionnaireMamounometre() {
     return {
         title: "Mamounomètre (pas de jujemen !)",
         questions: [
@@ -14,7 +32,7 @@ export function getQuestionnaire() {
                 category: "family",
                 type: "number",
                 title: "Nombre de pères différents ?",
-                scoreIgnoreValues: [0,1],
+                scoreIgnoreValues: [0, 1],
                 score: 20,
             },
             {
