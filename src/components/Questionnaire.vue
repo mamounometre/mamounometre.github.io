@@ -22,7 +22,7 @@
       </v-row>
     </v-form>
     <v-btn large dark bottom center color="green" @click="calculateScore">
-      Mamounoscore: {{ scoreComputed || 0 }} points
+      Mamounoscore: {{ calculatedScore() }} points
     </v-btn>
   </v-container>
 </template>
@@ -41,9 +41,9 @@ export default {
     questionnaire: Object,
   },
   methods: {
-    calculateScore: function (questionnaire) {
-      const questionnaireInput = questionnaire || this.$props.questionnaire;
-      this.scoreComputed = calculateScore(questionnaireInput);
+    calculatedScore: function () {
+      const questionnaireInput = this.$props.questionnaire;
+      return calculateScore(questionnaireInput);
     },
   },
   watch: {
@@ -51,7 +51,7 @@ export default {
       handler(questionnaire) {
         //do something when the data changes.
         if (questionnaire) {
-          this.calculateScore(questionnaire);
+          this.calculatedScore(questionnaire);
         }
       },
       deep: true,
