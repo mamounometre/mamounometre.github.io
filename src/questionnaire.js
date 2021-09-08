@@ -9,7 +9,7 @@ function initQuestionnaire(questionnaire) {
     questionnaire.questions = questionnaire.questions.map(question => {
         if (urlParams.get(question.id)) {
             const value = urlParams.get(question.id);
-            question.value = question.type === 'boolean' ? Boolean.valueOf(value) : question.type === 'number' ? parseInt(value) : value;
+            question.value = question.type === 'boolean' ? (value === 'true' ? true : false) : question.type === 'number' ? parseInt(value) : value;
         }
         return question;
     });
