@@ -115,7 +115,7 @@ function questionnaireMamounometre() {
                 category: "style",
                 type: "boolean",
                 title: "Tatouage avec signe infini",
-                score: 5,
+                score: 10,
             },
             {
                 id: "myKidsMyLife",
@@ -129,7 +129,7 @@ function questionnaireMamounometre() {
                 category: "profile",
                 type: "boolean",
                 title: "Emploi déclaré de type 'Plus bo métié du mondes: Maman' ou 'CEO chez Guess'",
-                score: 10
+                score: 20
             },
             {
                 id: "socialNetworks",
@@ -143,14 +143,14 @@ function questionnaireMamounometre() {
                 category: "post",
                 type: "boolean",
                 title: "Utilisation de 'Pa de jujement'",
-                score: 10,
+                score: 30,
             },
             {
                 id: "babyNumberNaming",
                 category: "post",
                 type: "boolean",
                 title: "Utilisation de 'bb1, bb2, bb3...''",
-                score: 10,
+                score: 20,
             },
             {
                 id: "babyMonthCounting",
@@ -186,6 +186,13 @@ function questionnaireMamounometre() {
                 type: "boolean",
                 title: "Absence de soins, ou soins inadaptés",
                 score: 30,
+            },
+            {
+                id: "motherCheating",
+                category: "post",
+                type: "boolean",
+                title: "Infidélité",
+                score: 20,
             },
             {
                 id: "motherSexDumb",
