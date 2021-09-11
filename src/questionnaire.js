@@ -142,7 +142,7 @@ function questionnaireMamounometre() {
                 id: "noJudgement",
                 category: "post",
                 type: "boolean",
-                title: "Utilisation de 'Pa de jujement'",
+                title: "Utilisation de 'Pa de jujemant'",
                 score: 30,
             },
             {
