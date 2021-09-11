@@ -11,7 +11,7 @@
           width="40"
         />
       </div>
-      <v-toolbar-title>Le mamounomètre (version alpha, need HTML/CSS skills !)</v-toolbar-title>
+      <v-toolbar-title>Le mamounomètre (version alpha)</v-toolbar-title>
       <v-spacer></v-spacer>
 
       <v-btn
