@@ -30,7 +30,7 @@
           hide-default-footer
           disable-sort
         >
-          <template v-slot:item.score="{ item }">
+          <template v-slot:[`item.score`]="{ item }">
             <v-chip :color="getColor(item.score)" dark>
               {{ item.score }}
             </v-chip>
