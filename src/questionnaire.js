@@ -9,7 +9,7 @@ function initQuestionnaire(questionnaire) {
     questionnaire.questions = questionnaire.questions.map(question => {
         if (urlParams.get(question.id)) {
             const value = urlParams.get(question.id);
-            question.value = question.type === 'boolean' ? (value === 'true' ? true : false) : question.type === 'number' ? parseInt(value) : value;
+            question.value = question.type === 'boolean' ? (value === 'true' ? true : false) : question.type === 'number' ? parseInt(value || "0") : value;
         }
         return question;
     });
@@ -19,6 +19,24 @@ function initQuestionnaire(questionnaire) {
 function questionnaireMamounometre() {
     return {
         title: "Mamounomètre (pas de jujemen !)",
+        categories: [
+            {
+                id: "family",
+                label: "Famille"
+            },
+            {
+                id: "style",
+                label: "Style"
+            },
+            {
+                id: "profile",
+                label: "Profil"
+            },
+            {
+                id: "post",
+                label: "Attitude"
+            }
+        ],
         questions: [
             {
                 id: "childrenNuber",
@@ -79,22 +97,22 @@ function questionnaireMamounometre() {
                 max: 5,
             },
             {
-                id: "tatooChildrenName",
-                category: "tatoo",
+                id: "styleChildrenName",
+                category: "style",
                 type: "boolean",
                 title: "Tatouage(s) avec les prénoms des enfants",
                 score: 10,
             },
             {
-                id: "tatooTypos",
-                category: "tatoo",
+                id: "styleTypos",
+                category: "style",
                 type: "boolean",
                 title: "Fautes d'orthographe dans les tatouages",
                 score: 20,
             },
             {
-                id: "tatooInfinite",
-                category: "tatoo",
+                id: "styleInfinite",
+                category: "style",
                 type: "boolean",
                 title: "Tatouage avec signe infini",
                 score: 5,
