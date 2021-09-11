@@ -2,5 +2,5 @@ module.exports = {
   transpileDependencies: [
     'vuetify'
   ],
-  publicPath: '/mamounometre/'
+  publicPath: '/mamounometre.github.io/'
 }
