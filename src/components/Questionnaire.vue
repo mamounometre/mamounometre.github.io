@@ -29,7 +29,7 @@
           class="elevation-1"
           hide-default-footer
           disable-sort
-        > 
+        >
           <template v-slot:[`item.score`]="{ item }">
             <v-chip :color="getColor(item.score)" dark>
               {{ item.score }}
@@ -51,8 +51,7 @@
           Partager
         </v-btn>
         <v-snackbar v-model="snackbar">
-          <a :href="shareLink" target="_blank">Lien de partage à copier</a> :
-          {{ shareLink }}
+          {{ shareLinkMessage }}
           <template v-slot:action="{ attrs }">
             <v-btn color="pink" text v-bind="attrs" @click="snackbar = false">
               Fermer
@@ -81,10 +80,12 @@ export default {
   data: () => ({
     snackbar: false,
     shareLink: "",
+    shareLinkMessage: "",
     headers: [
       { text: "Categorie", value: "category" },
       { text: "Score", value: "score" },
     ],
+    navigator: navigator,
   }),
   computed: {
     scoresTable: function () {
@@ -118,6 +119,14 @@ export default {
     share: async function () {
       this.shareLink = await buildShareUrl(this.$props.questionnaire);
       console.log("Share link: " + this.shareLink);
+      try {
+        await this.$data.navigator.clipboard.writeText(this.shareLink);
+        this.shareLinkMessage = "Lien copié dans le presse-papier";
+      } catch (e) {
+        this.shareLinkMessage = this.shareLink;
+        console.error("Cannot copy URL: " + e.message);
+
+      }
       this.snackbar = true;
     },
   },
