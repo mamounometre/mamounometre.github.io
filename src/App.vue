@@ -44,6 +44,29 @@ export default {
   data: () => ({
     questionnaire: getQuestionnaire(),
   }),
+
+  metaInfo() {
+    return {
+      title: "Mamounometre",
+      meta: [
+        {
+          name: "description",
+          content: "Calculez scientifiquement si vous êtes une mamoune !",
+        },
+        {
+          property: "og:title",
+          content: "Mamounometre",
+        },
+        { property: "og:site_name", content: "Mamounometre" },
+        { property: "og:type", content: "website" },
+        {
+          property: "og:image",
+          content: "https://mamounometre.github.io/assets/social-preview.png",
+        },
+        { name: "robots", content: "index,follow" },
+      ],
+    };
+  },
 };
 </script>
 
